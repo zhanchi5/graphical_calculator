@@ -18,16 +18,16 @@ int CALLBACK WinMain(HINSTANCE hInstance, HINSTANCE hPrevInst, LPSTR lpCmdLine, 
 
 BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 {
-	switch (uMsg) // Обработка сообщений
+	switch (uMsg) 
 	{
-	case WM_INITDIALOG: // инициализация, здесь будут добавляться компоненты
+	case WM_INITDIALOG: 
 	{	
 		HICON hIcon1 = LoadIcon(GetModuleHandle(NULL), MAKEINTRESOURCE(MAIN_ICON));
 		SendMessage(hwnd, WM_SETICON, 1, (LPARAM)hIcon1);
 
 		break;
 	}
-	case WM_COMMAND: // обработка команд кнопок, полей ввода...
+	case WM_COMMAND: 
 		switch (LOWORD(wParam))
 		{
 		case IDC_SUMM:
@@ -39,7 +39,7 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				return TRUE;
 			}
 			SendDlgItemMessage(hwnd, IDC_EDIT2, WM_GETTEXT, 255, (LPARAM)Text);
-			// получить текст из текстового поля и записать в массив Text
+			
 			if (sscanf_s(Text, "%lf", &y) < 1)
 			{
 				MessageBox(hwnd, "Wrong second operator format", "Format error", MB_OK | MB_ICONHAND);
@@ -51,7 +51,7 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			sprintf_s(Text, "%f", z); 
 			SendDlgItemMessage(hwnd, IDC_EDIT3, WM_SETTEXT, 0, (LPARAM)Text);
 			SendDlgItemMessage(hwnd, IDC_EDIT3, WM_SETTEXT, 0, (LPARAM)Text);
-			// Помещаем текст массива в текстовое поле
+			
 			sprintf_s(Text, "%f %c %f = %f", x, Sign, y, z);
 			SendDlgItemMessage(hwnd, IDC_LIST1, LB_ADDSTRING, 0, (LPARAM)Text);
 		}
@@ -65,7 +65,7 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 				return TRUE;
 			}
 			SendDlgItemMessage(hwnd, IDC_EDIT2, WM_GETTEXT, 255, (LPARAM)Text);
-			// получить текст из текстового поля и записать в массив Text
+			
 			if (sscanf_s(Text, "%lf", &y) < 1)
 			{
 				MessageBox(hwnd, "Wrong second operator format", "Format error", MB_OK | MB_ICONHAND);
@@ -77,7 +77,7 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			sprintf_s(Text, "%f", z);
 			SendDlgItemMessage(hwnd, IDC_EDIT3, WM_SETTEXT, 0, (LPARAM)Text);
 			SendDlgItemMessage(hwnd, IDC_EDIT3, WM_SETTEXT, 0, (LPARAM)Text);
-			 //Помещаем текст массива в текстовое поле
+			
 			sprintf_s(Text, "%f %c %f = %f", x, Sign, y, z);
 			SendDlgItemMessage(hwnd, IDC_LIST1, LB_ADDSTRING, 0, (LPARAM)Text);
 		}
@@ -93,7 +93,7 @@ BOOL CALLBACK DlgProc(HWND hwnd, UINT uMsg, WPARAM wParam, LPARAM lParam)
 			return FALSE;
 		}
 		break;
-	case WM_CLOSE: // обработка закрытия окна пользователем
+	case WM_CLOSE: 
 		EndDialog(hwnd, 0);
 		return FALSE;
 
